@@ -1,0 +1,41 @@
+import PySimpleGUI as sg
+
+sg.theme('DarkAmber')
+
+num1=0
+num2=0
+num3=0
+num4=0
+#lista=[num1+num2+num3+num4]
+
+layout = [  [sg.Text('ceramicas desponiveis: azul-10$,rosa-12$,marrom-14$,verde-16$')],
+            [sg.Text('digite o item'), sg.InputText()],
+            [sg.Button('Adicionar'), sg.Button('Cancelar')],
+            [sg.Button('finalizar pedido')],
+            [sg.Text('Você entrou com: ') ],[sg.Output(size=(50,10))] ]
+
+window = sg.Window('Armazem Rodrigues', layout)
+
+while True:
+    event, values = window.read()
+    if event == sg.WIN_CLOSED or event == 'Cancelar' : 
+        break
+    if event == 'Adicionar' :
+        if values[0] == 'azul' :
+            num1+=10 
+            print('ceramica azul')
+        if values[0] == 'rosa' :
+            num1+=12 
+            print('ceramica rosa')
+        if values[0] == 'marrom' :
+            num1+=14
+            print('ceramica marrom')
+        if values[0] == 'verde' :
+            num1+=16 
+            print('ceramica verde')
+    if event == 'finalizar pedido' :
+        print()
+        print('valor total: $',num1+num2+num3+num4)
+        
+
+window.close()
